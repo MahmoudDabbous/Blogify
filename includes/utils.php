@@ -21,3 +21,10 @@ function authorize(bool $condition, int $code = 403): void
     abort($code);
   }
 }
+
+function view(string $path, array $attributes = []): void
+{
+  extract($attributes);
+  require __DIR__ . '/../views/'. $path;
+  die();
+}

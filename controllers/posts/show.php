@@ -14,4 +14,8 @@ authorize($post['user_id'] === 1);
 $title = trim(htmlspecialchars($post['title']));
 $heading = trim(htmlspecialchars($post['title']));
 
-require(base_path() . 'views/posts/show.view.php');
+view('posts/show.view.php',[
+  'post' => $post,
+  'heading' => $heading,
+  'title' => $title,
+]);

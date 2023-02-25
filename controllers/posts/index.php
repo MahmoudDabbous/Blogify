@@ -1,8 +1,5 @@
 <?php
 
-$title = 'My Posts';
-$heading = 'My Posts';
-
 $config = require('../config.php');
 $pdo = new Database($config['DB']);
 
@@ -11,4 +8,8 @@ $posts = $pdo->query(
   [':id' => 1]
 )->all();
 
-require(base_path() . 'views/posts/index.view.php');
+view('posts/index.view.php',[
+  'posts' => $posts,
+  'titles' => 'My Posts',
+  'heading' => 'My Posts',
+]);

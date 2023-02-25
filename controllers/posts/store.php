@@ -13,14 +13,17 @@ if (!Validator::string($_POST['title'], 1, 254)) {
 }
 
 if (!empty($errors)) {
-  header('location: /posts/create');
-  die();
+  view('posts/create.view.php', [
+    'errors' => $errors,
+    'title' => 'Create a Post',
+    'heading' => 'Create a Post'
+  ]);
 }
 
 $config = require('../config.php');
 $pdo = new Database($config['DB']);
 
-$posts = $pdo->query(
+$pdo->query(
   'INSERT INTO posts(title, body, user_id) VALUES (:title, :body, :user_id)',
   [
     'user_id' => 1,
@@ -29,4 +32,13 @@ $posts = $pdo->query(
   ]
 );
 
-header('location: /posts');
+$posts = $pdo->query(
+  'SELECT * FROM posts WHERE user_id = :id',
+  [':id' => 1]
+)->all();
+
+view('/posts/index.view.php', [
+  'titles' => 'My Posts',
+  'heading' => 'My Posts',
+  'posts' => $posts,
+]);
