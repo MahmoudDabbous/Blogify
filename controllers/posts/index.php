@@ -11,4 +11,4 @@ $posts = $pdo->query(
   [':id' => 1]
 )->all();
 
-require(base_path() . 'views/posts/posts.view.php');
+require(base_path() . 'views/posts/index.view.php');
