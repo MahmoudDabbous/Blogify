@@ -3,7 +3,7 @@
 <?php require_once('components/breadcrumb.component.php') ?>
 
 
-<div class="container mt-3 rounded">
+<div class="container mt-3 rounded box-shadow">
   <!-- Content -->
 </div>
 

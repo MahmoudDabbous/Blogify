@@ -3,7 +3,7 @@
 <?php require_once(view_path() . 'components/breadcrumb.component.php') ?>
 
 
-<div class="container mt-4 rounded py-1 bg-dark">
+<div class="container mt-4 rounded box-shadow py-1 bg-dark">
   <div class="card text-bg-dark border-0 col-12 m-auto">
     <div class="card-body">
       <h5 class="card-text"><?= trim(htmlspecialchars($post['body'])) ?></h5>

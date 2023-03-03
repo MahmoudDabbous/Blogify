@@ -8,6 +8,7 @@
   <title>Blogify | <?= $user ?? $title ?? 'Not found' ?></title>
 
   <link rel="stylesheet" href="http://<?= $_SERVER['HTTP_HOST'] ?>/css/bootstrap.min.css">
+  <link rel="stylesheet" href="http://<?= $_SERVER['HTTP_HOST'] ?>/css/style.css">
 </head>
 
 <body class="pb-5">

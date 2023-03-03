@@ -4,7 +4,7 @@
 
 <?php if (isset($errors)) require(view_path() . 'components/alert.component.php'); ?>
 
-<form action="/posts/store" method="POST" class="container mt-4 rounded py-1 text-bg-dark">
+<form action="/posts/store" method="POST" class="container mt-4 rounded box-shadow py-1 text-bg-dark">
   <div class="mb-3 row-cols-auto">
     <label for="formControlInput1" class="form-label">Post Title</label>
     <input required minlength="6" maxlength="254" type="text" class="form-control" id="formControlInput1" name="title" value="<?= $_POST['title'] ?? '' ?>">
