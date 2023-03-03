@@ -18,14 +18,14 @@ function authorize(bool $condition, int $code = 403): void
 function view(string $path, array $attributes = []): void
 {
   extract($attributes);
-  require __DIR__ . '/../views/' . $path;
+  require view_path() . $path;
   die();
 }
 
 function abort(int $code = 404): void
 {
   http_response_code($code);
-  view(base_path() . "views/errors/$code.view.php");
+  view(view_path() . "errors/$code.view.php");
 }
 
 function redirect(string $path, array $attributes = [], int $code = 0): void

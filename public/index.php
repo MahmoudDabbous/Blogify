@@ -1,6 +1,9 @@
 <?php
 
-require('../helpers/include.php');
-require(base_path().'database.php');
-require(base_path().'Validator.php');
-require(base_path().'router.php');
+require('../src/helpers/include.php');
+
+spl_autoload_register(function ($class) {
+    require base_path() .'src/'.$class . '.php';
+});
+
+require(base_path() . 'src/router.php');
