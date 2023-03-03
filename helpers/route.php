@@ -7,8 +7,9 @@ function urlIs(string $value): bool
 
 function mapRoute(string $url, array $routes): void
 {
-  if (array_key_exists($url, $routes)) {
-    require($routes[$url]);
+  $uri = parse_url($url)['path'];
+  if (array_key_exists($uri, $routes)) {
+    require($routes[$uri]);
   } else {
     abort(404);
   }

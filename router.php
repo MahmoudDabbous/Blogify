@@ -10,5 +10,5 @@ $routes = [
   '/posts/create' => base_path() . 'controllers/posts/create.php',
   '/posts/store' => base_path() . 'controllers/posts/store.php',
 ];
-$url = parse_url($_SERVER['REQUEST_URI'])['path'];
-mapRoute($url, $routes);
+
+mapRoute($_SERVER['REQUEST_URI'], $routes);
