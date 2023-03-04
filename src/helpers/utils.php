@@ -25,7 +25,7 @@ function view(string $path, array $attributes = []): void
 function abort(int $code = 404): void
 {
   http_response_code($code);
-  view(view_path() . "errors/$code.view.php");
+  view("errors/$code.view.php");
 }
 
 function redirect(string $path, array $attributes = [], int $code = 0): void
