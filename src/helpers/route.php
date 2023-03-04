@@ -9,7 +9,7 @@ function mapRoute(string $url, array $routes): void
 {
   $uri = parse_url($url)['path'];
   if (array_key_exists($uri, $routes)) {
-    require($routes[$uri]);
+    require(base_path() . 'controllers/' . $routes[$uri]);
   } else {
     abort(404);
   }
