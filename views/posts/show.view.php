@@ -11,7 +11,10 @@
     <div class="card-footer ms-auto border-0">
       <a href="/posts" class="btn btn-lg border-0 btn-outline-secondary">Back</a>
       <a href="#" class="btn btn-lg border-0 btn-outline-warning">Edit</a>
-      <a href="#" class="btn btn-lg border-0 btn-outline-danger">Delete</a>
+      <form class="d-inline" method="POST">
+        <input type="hidden" name="id" value="<?= $post['id'] ?>">
+        <button type="submit" class="btn btn-lg border-0 btn-outline-danger">Delete</button>
+      </form>
     </div>
   </div>
 </div>

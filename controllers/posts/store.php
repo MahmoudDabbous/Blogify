@@ -26,13 +26,13 @@ if (!empty($errors)) {
 $config = require('../config.php');
 $pdo = new Database($config['DB']);
 
-$posts = $pdo->query(
+$pdo->query(
   'INSERT INTO posts(title, body, user_id) VALUES (:title, :body, :user_id)',
   [
     'user_id' => 1,
     'title' => $_POST['title'],
     'body' => $_POST['body'],
   ]
-)->all();
+);
 
-redirect('/posts', ['posts' => $posts]);
+redirect('/posts');
