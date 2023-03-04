@@ -1,5 +1,7 @@
 <?php
 
+use Src\Database;
+
 $config = require('../config.php');
 $pdo = new Database($config['DB']);
 
@@ -8,7 +10,7 @@ $posts = $pdo->query(
   [':id' => 1]
 )->all();
 
-view('posts/index.view.php',[
+view('posts/index.view.php', [
   'posts' => $posts,
   'titles' => 'My Posts',
   'heading' => 'My Posts',

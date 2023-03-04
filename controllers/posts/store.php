@@ -1,5 +1,8 @@
 <?php
 
+use Src\Database;
+use Src\Validator;
+
 if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
   abort(405);
 }
@@ -13,7 +16,7 @@ if (!Validator::string($_POST['title'], 1, 254)) {
 }
 
 if (!empty($errors)) {
-  view('posts/create.view.php', [
+  redirect('posts/create', [
     'errors' => $errors,
     'title' => 'Create a Post',
     'heading' => 'Create a Post'
@@ -23,22 +26,13 @@ if (!empty($errors)) {
 $config = require('../config.php');
 $pdo = new Database($config['DB']);
 
-$pdo->query(
+$posts = $pdo->query(
   'INSERT INTO posts(title, body, user_id) VALUES (:title, :body, :user_id)',
   [
     'user_id' => 1,
     'title' => $_POST['title'],
     'body' => $_POST['body'],
   ]
-);
-
-$posts = $pdo->query(
-  'SELECT * FROM posts WHERE user_id = :id',
-  [':id' => 1]
 )->all();
 
-view('/posts/index.view.php', [
-  'titles' => 'My Posts',
-  'heading' => 'My Posts',
-  'posts' => $posts,
-]);
+redirect('/posts', ['posts' => $posts]);
