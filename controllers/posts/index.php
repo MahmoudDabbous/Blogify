@@ -28,6 +28,6 @@ $posts = $pdo->query(
 
 view('posts/index.view.php', [
   'posts' => $posts,
-  'titles' => 'My Posts',
+  'title' => 'My Posts',
   'heading' => 'My Posts',
 ]);
