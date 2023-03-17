@@ -15,11 +15,13 @@ function authorize(bool $condition, int $code = 403): void
   }
 }
 
-function view(string $path, array $attributes = []): void
+function view(string $path, array $attributes = []): string
 {
+  ob_start();
   extract($attributes);
   require view_path() . $path;
-  die();
+  $output = ob_get_clean();
+  return $output;
 }
 
 function abort(int $code = 404): void

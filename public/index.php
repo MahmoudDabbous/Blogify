@@ -1,6 +1,6 @@
 <?php
 
-require('../src/helpers/include.php');
+require(__DIR__ . '../src/helpers/include.php');
 
 spl_autoload_register(function ($class) {
     $class = str_replace('\\', DIRECTORY_SEPARATOR, $class);
