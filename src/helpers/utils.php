@@ -15,13 +15,13 @@ function authorize(bool $condition, int $code = 403): void
   }
 }
 
-function view(string $path, array $attributes = []): string
+function view(string $path, array $attributes = []): void
 {
   ob_start();
   extract($attributes);
   require view_path() . $path;
   $output = ob_get_clean();
-  return $output;
+  echo $output;
 }
 
 function abort(int $code = 404): void
@@ -38,4 +38,9 @@ function redirect(string $path, array $attributes = [], int $code = 0): void
   extract($attributes);
   header('location: ' . $path);
   die();
+}
+
+function urlIs(string $uri): bool
+{
+  return $_SERVER['REQUEST_URI'] === $uri;
 }
